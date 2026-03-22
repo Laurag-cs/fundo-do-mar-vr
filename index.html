@@ -40,6 +40,7 @@
       <a-asset-item id="fossil-glb" src="fossil.glb"></a-asset-item>
       <a-asset-item id="pedra-obj" src="pedra.obj"></a-asset-item>
       <a-asset-item id="pedra-mtl" src="pedra.mtl"></a-asset-item>
+      <a-asset-item id="extra-obj" src="cthulu.obj"></a-asset-item>
 
     </a-assets>
 
@@ -237,6 +238,14 @@
     pedra.setAttribute('scale','0.3 0.3 0.3');
     pedra.setAttribute('position','80 4 10');
     scene.appendChild(pedra);
+
+    let extra = document.createElement('a-obj-model');
+    extra.setAttribute('src','#extra-obj');
+    extra.setAttribute('rotation','0 50 0');
+    extra.setAttribute('scale','0.5 0.5 0.5');
+    extra.setAttribute('position','-65 0 -47');
+    extra.setAttribute('material','src:#chao; color:#777; side:double');    
+    scene.appendChild(extra);
 
   </script>
 </body>
