@@ -166,6 +166,9 @@
     scene.appendChild(cardume1);
     }
     criarPeixe(scene); 
+    for (var i = 0; i < 15; i++) {
+      criarPeixe(scene);
+    }
 
     let tartaruga = document.createElement('a-obj-model');
     tartaruga.setAttribute('src','#tartaruga-obj');
