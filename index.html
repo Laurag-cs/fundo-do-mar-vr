@@ -20,6 +20,8 @@
     <a-assets>
       <img id="chao" src="chao.jpg">
       <a-asset-item id="tubarao-glb" src="megalodon.glb"></a-asset-item>
+      <a-asset-item id="baleia-obj" src="baleia.obj"></a-asset-item>
+      <a-asset-item id="baleia-mtl" src="baleia.mtl"></a-asset-item>
     </a-assets>
 
     <a-plane src="#chao" rotation="-90 0 0" width="150" height="150" color="#555"></a-plane>
@@ -79,6 +81,15 @@
     tubarao.setAttribute('animation__wiggle','property:rotation;dur:900;dir:alternate;loop:true;to:0 100 0;easing:easeInOutSine');
 
     scene.appendChild(tubarao);
+
+    let baleia = document.createElement('a-obj-model');
+    baleia.setAttribute('src','#baleia-obj');
+    baleia.setAttribute('mtl','#baleia-mtl');
+    baleia.setAttribute('rotation','-90 0 0');
+    baleia.setAttribute('scale','0.05 0.05 0.05');
+    baleia.setAttribute('position','90 19 -5');
+    baleia.setAttribute('animation','property:position;to:-300 19 -75;dur:40000;loop:true');
+    scene.appendChild(baleia);
   </script>
 </body>
 </html>
