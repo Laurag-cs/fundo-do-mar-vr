@@ -1,85 +1,70 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="utf-8">
-    <title>Fundo do Mar VR - Textura Pinterest</title>
-    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Fundo do Mar VR</title>
+  <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
 
-    <script>
-        // Componente de colisão da jaula
-        AFRAME.registerComponent('limite', {
-            tick: function () {
-                var pos = this.el.object3D.position;
-                var limite = 2.4;
-                if (pos.x > limite) pos.x = limite;
-                if (pos.x < -limite) pos.x = -limite;
-                if (pos.z > limite) pos.z = limite;
-                if (pos.z < -limite) pos.z = -limite;
-            }
-        });
-    </script>
+  <script>
+    // Componente para limitar o movimento da câmera
+    AFRAME.registerComponent('limite', {
+      tick: function () {
+        const pos = this.el.object3D.position;
+        const limite = 2.4;
+        pos.x = Math.min(Math.max(pos.x, -limite), limite);
+        pos.z = Math.min(Math.max(pos.z, -limite), limite);
+      }
+    });
+  </script>
 </head>
-
 <body>
-    <a-scene>
+  <a-scene fog="type: linear; color: #080F2E; near: 5; far: 100">
+    
+    <!-- Assets -->
+    <a-assets>
+      <img id="chao" src="chao.jpg">
+    </a-assets>
 
-        <a-assets>
-            <img id="areia-pinterest" src="https://i.pinimg.com/736x/2c/85/8e/2c858e93306a9cfacbd7b109fb339a2b.jpg" crossorigin="anonymous">
-        </a-assets>
-        
-        <a-plane
-            src="#areia-pinterest"
-            rotation="-90 0 0"
-            width="100"
-            height="100"
-            position="0 -0.02 0"
-            material="shader: flat; color: #ffffff; repeat: 15 15">
-        </a-plane>
+    <!-- Chão -->
+    <a-plane
+      src="#chao"
+      rotation="-90 0 0"
+      width="150"
+      height="150"
+      color="#555">
+    </a-plane>
 
-        <a-entity position="0 1.6 0">
-            <a-camera limite>
-                <a-cursor color="#FF0000"></a-cursor>
-            </a-camera>
-        </a-entity>
+    <!-- Câmera com limite -->
+    <a-entity position="0 1.6 0">
+      <a-camera limite cursor="rayOrigin: mouse"></a-camera>
+    </a-entity>
 
-        <a-light type="ambient" intensity="1.0"></a-light>
-        <a-light type="directional" position="1 10 1" intensity="0.5"></a-light>
+    <!-- Luzes -->
+    <a-light type="ambient" intensity="0.5"></a-light>
+    <a-light type="directional" position="0 10 5" intensity="0.8"></a-light>
 
-        <a-sky color="#0a2540"></a-sky>
+    <!-- Céu -->
+    <a-sky color="#0a2540"></a-sky>
 
-        <a-entity id="jaula">
-            <a-box position="0 0 0" width="6" height="0.1" depth="6" color="#444"></a-box>
-            <a-box position="0 5 0" width="6" height="0.1" depth="6" color="#444"></a-box>
+    <!-- Jaula simples -->
+    <a-entity id="jaula" position="0 0 0">
+      <!-- Chão e teto da jaula -->
+      <a-box position="0 0 0" width="6" height="0.1" depth="6" color="#444"></a-box>
+      <a-box position="0 5 0" width="6" height="0.1" depth="6" color="#444"></a-box>
+      
+      <!-- Barras da frente e trás -->
+      <a-box position="-2.5 2.5 -3" width="0.1" height="5" depth="0.1" color="#aaa"></a-box>
+      <a-box position="2.5 2.5 -3" width="0.1" height="5" depth="0.1" color="#aaa"></a-box>
+      <a-box position="-2.5 2.5 3" width="0.1" height="5" depth="0.1" color="#aaa"></a-box>
+      <a-box position="2.5 2.5 3" width="0.1" height="5" depth="0.1" color="#aaa"></a-box>
 
-            <a-box position="-2.5 2.5 -3" width="0.1" height="5" depth="0.1" color="#aaa"></a-box>
-            <a-box position="-1.5 2.5 -3" width="0.1" height="5" depth="0.1" color="#aaa"></a-box>
-            <a-box position="-0.5 2.5 -3" width="0.1" height="5" depth="0.1" color="#aaa"></a-box>
-            <a-box position="0.5 2.5 -3" width="0.1" height="5" depth="0.1" color="#aaa"></a-box>
-            <a-box position="1.5 2.5 -3" width="0.1" height="5" depth="0.1" color="#aaa"></a-box>
-            <a-box position="2.5 2.5 -3" width="0.1" height="5" depth="0.1" color="#aaa"></a-box>
+      <!-- Barras laterais -->
+      <a-box position="-3 2.5 -2.5" width="0.1" height="5" depth="0.1" color="#aaa"></a-box>
+      <a-box position="3 2.5 -2.5" width="0.1" height="5" depth="0.1" color="#aaa"></a-box>
+      <a-box position="-3 2.5 2.5" width="0.1" height="5" depth="0.1" color="#aaa"></a-box>
+      <a-box position="3 2.5 2.5" width="0.1" height="5" depth="0.1" color="#aaa"></a-box>
+    </a-entity>
 
-            <a-box position="-2.5 2.5 3" width="0.1" height="5" depth="0.1" color="#aaa"></a-box>
-            <a-box position="-1.5 2.5 3" width="0.1" height="5" depth="0.1" color="#aaa"></a-box>
-            <a-box position="-0.5 2.5 3" width="0.1" height="5" depth="0.1" color="#aaa"></a-box>
-            <a-box position="0.5 2.5 3" width="0.1" height="5" depth="0.1" color="#aaa"></a-box>
-            <a-box position="1.5 2.5 3" width="0.1" height="5" depth="0.1" color="#aaa"></a-box>
-            <a-box position="2.5 2.5 3" width="0.1" height="5" depth="0.1" color="#aaa"></a-box>
-
-            <a-box position="-3 2.5 -2.5" width="0.1" height="5" depth="0.1" color="#aaa"></a-box>
-            <a-box position="-3 2.5 -1.5" width="0.1" height="5" depth="0.1" color="#aaa"></a-box>
-            <a-box position="-3 2.5 -0.5" width="0.1" height="5" depth="0.1" color="#aaa"></a-box>
-            <a-box position="-3 2.5 0.5" width="0.1" height="5" depth="0.1" color="#aaa"></a-box>
-            <a-box position="-3 2.5 1.5" width="0.1" height="5" depth="0.1" color="#aaa"></a-box>
-            <a-box position="-3 2.5 2.5" width="0.1" height="5" depth="0.1" color="#aaa"></a-box>
-
-            <a-box position="3 2.5 -2.5" width="0.1" height="5" depth="0.1" color="#aaa"></a-box>
-            <a-box position="3 2.5 -1.5" width="0.1" height="5" depth="0.1" color="#aaa"></a-box>
-            <a-box position="3 2.5 -0.5" width="0.1" height="5" depth="0.1" color="#aaa"></a-box>
-            <a-box position="3 2.5 0.5" width="0.1" height="5" depth="0.1" color="#aaa"></a-box>
-            <a-box position="3 2.5 1.5" width="0.1" height="5" depth="0.1" color="#aaa"></a-box>
-            <a-box position="3 2.5 2.5" width="0.1" height="5" depth="0.1" color="#aaa"></a-box>      
-        </a-entity>
-
-    </a-scene>
+  </a-scene>
 </body>
 </html>
