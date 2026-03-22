@@ -37,7 +37,10 @@
       <a-asset-item id="alga-mtl" src="uploads_files_2301153_seaweedList.mtl"></a-asset-item>
       <a-asset-item id="barco-obj" src="Cruiser_2012.obj"></a-asset-item>
       <a-asset-item id="barco-mtl" src="Cruiser_2012.mtl"></a-asset-item>
-    
+      <a-asset-item id="fossil-glb" src="fossil.glb"></a-asset-item>
+      <a-asset-item id="pedra-obj" src="pedra.obj"></a-asset-item>
+      <a-asset-item id="pedra-mtl" src="pedra.mtl"></a-asset-item>
+
     </a-assets>
 
     <a-plane src="#chao" rotation="-90 0 0" width="150" height="150" color="#555"></a-plane>
@@ -219,6 +222,22 @@
     barco.setAttribute('scale','0.1 0.1 0.1');
     barco.setAttribute('position','0 0 -50');
     scene.appendChild(barco);
+
+    let fossil = document.createElement('a-gltf-model');
+    fossil.setAttribute('src', '#fossil-glb'); 
+    fossil.setAttribute('rotation', '0 -70 0');
+    fossil.setAttribute('scale', '10 10 10');
+    fossil.setAttribute('position', '0 0 70');
+    scene.appendChild(fossil);
+
+    let pedra = document.createElement('a-obj-model');
+    pedra.setAttribute('src','#pedra-obj');
+    pedra.setAttribute('mtl','#pedra-mtl');
+    pedra.setAttribute('rotation','0 -100 0');
+    pedra.setAttribute('scale','0.3 0.3 0.3');
+    pedra.setAttribute('position','80 4 10');
+    scene.appendChild(pedra);
+
   </script>
 </body>
 </html>
