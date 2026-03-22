@@ -30,6 +30,8 @@
       <a-asset-item id="pboi-mtl" src="12957_Manatee_v1_l3.mtl"></a-asset-item>
       <a-asset-item id="peixe1-obj" src="peixe.obj"></a-asset-item>
       <a-asset-item id="peixe1-mtl" src="peixe.mtl"></a-asset-item>
+      <a-asset-item id="tartaruga-obj" src="tartaruga.obj"></a-asset-item>
+      <a-asset-item id="tartaruga-mtl" src="tartaruga.mtl"></a-asset-item>
     
     </a-assets>
 
@@ -164,6 +166,16 @@
     scene.appendChild(cardume1);
     }
     criarPeixe(scene); 
+
+    let tartaruga = document.createElement('a-obj-model');
+    tartaruga.setAttribute('src','#tartaruga-obj');
+    tartaruga.setAttribute('mtl','#tartaruga-mtl');
+    tartaruga.setAttribute('rotation','-70 0 0');
+    tartaruga.setAttribute('scale','0.06 0.06 0.06');
+    tartaruga.setAttribute('position','-300 5 20');
+    tartaruga.setAttribute('animation','property:position;to:300 5 20;dur:45000;loop:true;easing:linear');
+    tartaruga.setAttribute('animation__spin','property:rotation.x;to:-450;dur:9000;loop:true;easing:linear');
+    scene.appendChild(tartaruga);
   </script>
 </body>
 </html>
