@@ -26,7 +26,8 @@
       <a-asset-item id="agua-mtl" src="aviva.mtl"></a-asset-item>
       <a-asset-item id="crab-obj" src="crab.obj"></a-asset-item>
       <a-asset-item id="crab-mtl" src="crab.mtl"></a-asset-item>
-
+      <a-asset-item id="pboi-obj" src="12957_Manatee_v1_l3.obj"></a-asset-item>
+      <a-asset-item id="pboi-mtl" src="12957_Manatee_v1_l3.mtl"></a-asset-item>
     </a-assets>
 
     <a-plane src="#chao" rotation="-90 0 0" width="150" height="150" color="#555"></a-plane>
@@ -128,6 +129,15 @@
     crab.setAttribute('position','20 0 0');
     crab.setAttribute('animation','property:position;to:20 0 5;dur:1500;dir:alternate;loop:true;easing:linear');
     scene.appendChild(crab);
+
+    let pboi = document.createElement('a-obj-model');
+    pboi.setAttribute('src','#pboi-obj');
+    pboi.setAttribute('mtl','#pboi-mtl');
+    pboi.setAttribute('rotation','260 50 0');
+    pboi.setAttribute('scale','0.05 0.05 0.05');
+    pboi.setAttribute('position','-30 5 0');
+    pboi.setAttribute('animation','property:position;to:-30 8 0;dur:3000;dir:alternate;loop:true;easing:easeInOutSine');
+    scene.appendChild(pboi);
   </script>
 </body>
 </html>
