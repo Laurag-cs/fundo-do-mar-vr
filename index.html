@@ -35,6 +35,8 @@
       <a-asset-item id="tartaruga-mtl" src="tartaruga.mtl"></a-asset-item>
       <a-asset-item id="alga-obj" src="uploads_files_2301153_seaweedList.obj"></a-asset-item>
       <a-asset-item id="alga-mtl" src="uploads_files_2301153_seaweedList.mtl"></a-asset-item>
+      <a-asset-item id="barco-obj" src="Cruiser_2012.obj"></a-asset-item>
+      <a-asset-item id="barco-mtl" src="Cruiser_2012.mtl"></a-asset-item>
     
     </a-assets>
 
@@ -209,6 +211,14 @@
     criarAlga(-40,-18);
     criarAlga(-60,4);
     criarAlga(30,50);
+
+    let barco = document.createElement('a-obj-model');
+    barco.setAttribute('src','#barco-obj');
+    barco.setAttribute('mtl','#barco-mtl');
+    barco.setAttribute('rotation','0 0 -25');
+    barco.setAttribute('scale','0.1 0.1 0.1');
+    barco.setAttribute('position','0 0 -50');
+    scene.appendChild(barco);
   </script>
 </body>
 </html>
