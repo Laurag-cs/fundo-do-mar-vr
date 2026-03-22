@@ -28,6 +28,9 @@
       <a-asset-item id="crab-mtl" src="crab.mtl"></a-asset-item>
       <a-asset-item id="pboi-obj" src="12957_Manatee_v1_l3.obj"></a-asset-item>
       <a-asset-item id="pboi-mtl" src="12957_Manatee_v1_l3.mtl"></a-asset-item>
+      <a-asset-item id="peixe1-obj" src="peixe.obj"></a-asset-item>
+      <a-asset-item id="peixe1-mtl" src="peixe.mtl"></a-asset-item>
+    
     </a-assets>
 
     <a-plane src="#chao" rotation="-90 0 0" width="150" height="150" color="#555"></a-plane>
@@ -138,6 +141,29 @@
     pboi.setAttribute('position','-30 5 0');
     pboi.setAttribute('animation','property:position;to:-30 8 0;dur:3000;dir:alternate;loop:true;easing:easeInOutSine');
     scene.appendChild(pboi);
+
+    function criarPeixe(scene) {
+    var cardume1 = document.createElement('a-entity');
+    var peixe1 = document.createElement('a-obj-model');
+
+    peixe1.setAttribute('src', '#peixe1-obj');
+    peixe1.setAttribute('mtl', '#peixe1-mtl');
+
+    var x = Math.random() * 40 - 20;
+    var y = Math.random() * 8 + 2;
+    var z = -80;
+
+    cardume1.setAttribute('position', x + ' ' + y + ' ' + z);
+    peixe1.setAttribute('rotation', '-90 0 0');
+    peixe1.setAttribute('scale', '0.1 0.1 0.1');
+
+    cardume1.setAttribute('animation',
+        'property: position; to: ' + x + ' ' + y + ' 80; dur: 30000; loop: true; easing: linear');
+
+    cardume1.appendChild(peixe1);
+    scene.appendChild(cardume1);
+    }
+    criarPeixe(scene); 
   </script>
 </body>
 </html>
