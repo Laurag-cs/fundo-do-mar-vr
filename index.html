@@ -32,8 +32,11 @@
             rotation="-90 0 0"
             width="150"
             height="150"
-            position="0 0.01 0"
-            material="shader: flat; color: #BBB"> </a-plane>
+            position="0 -0.05 0"
+            material="shader: flat; color: #ff0000"
+            onload="console.log('Imagem carregada com sucesso!')"
+            onerror="console.log('Erro fatal ao carregar o chao.jpg')">
+        </a-plane>
 
         <a-entity position="0 1.6 0">
             <a-camera limite>
