@@ -33,6 +33,8 @@
       <a-asset-item id="peixe1-mtl" src="peixe.mtl"></a-asset-item>
       <a-asset-item id="tartaruga-obj" src="tartaruga.obj"></a-asset-item>
       <a-asset-item id="tartaruga-mtl" src="tartaruga.mtl"></a-asset-item>
+      <a-asset-item id="alga-obj" src="uploads_files_2301153_seaweedList.obj"></a-asset-item>
+      <a-asset-item id="alga-mtl" src="uploads_files_2301153_seaweedList.mtl"></a-asset-item>
     
     </a-assets>
 
@@ -189,6 +191,24 @@
     cardume.setAttribute('material','transparent:true');
     cardume.setAttribute('animation','property:position;to:-50 10 -50;dur:15000;loop:true;dir:alternate');
     scene.appendChild(cardume);
+
+    function criarAlga(x, z){
+    let alga = document.createElement('a-obj-model');
+    alga.setAttribute('src','#alga-obj');
+    alga.setAttribute('rotation','0 0 0');
+    alga.setAttribute('scale','4 4 4');
+    alga.setAttribute('material','color:#0c340c');
+    alga.setAttribute('position',`${x} 0 ${z}`);
+    scene.appendChild(alga);
+    }
+
+    criarAlga(-20,-35);
+    criarAlga(60,40);
+    criarAlga(-30,30);
+    criarAlga(45,-30);
+    criarAlga(-40,-18);
+    criarAlga(-60,4);
+    criarAlga(30,50);
   </script>
 </body>
 </html>
