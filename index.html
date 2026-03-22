@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
     <meta charset="utf-8">
-    <title>Fundo do Mar VR - Teste Base</title>
-
+    <title>Fundo do Mar VR - Projeto Final</title>
     <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
 
     <script>
+        // Componente para impedir que o usuário saia de dentro da jaula
         AFRAME.registerComponent('limite', {
             tick: function () {
                 var pos = this.el.object3D.position;
@@ -21,31 +21,29 @@
 </head>
 
 <body>
-    <a-scene fog="type: linear; color: #080F2E; near: 5; far: 100">
+    <a-scene fog="type: linear; color: #080F2E; near: 10; far: 80">
 
-       <a-assets>
-            <img id="chao" src="chao.jpg?v=1" crossorigin="anonymous">
-       </a-assets>
+        <a-assets timeout="10000">
+            <img id="tex-chao" src="chao.jpg?v=1" crossorigin="anonymous">
+        </a-assets>
         
         <a-plane
-            src="#chao"
+            src="#tex-chao"
             rotation="-90 0 0"
             width="150"
             height="150"
-            position="0 -0.05 0"
-            material="shader: flat; color: #ff0000"
-            onload="console.log('Imagem carregada com sucesso!')"
-            onerror="console.log('Erro fatal ao carregar o chao.jpg')">
+            position="0 -0.02 0"
+            material="shader: flat; fog: false; src: #tex-chao">
         </a-plane>
 
         <a-entity position="0 1.6 0">
             <a-camera limite>
-                <a-cursor></a-cursor>
+                <a-cursor color="#FF0000"></a-cursor>
             </a-camera>
         </a-entity>
 
-        <a-light type="ambient" intensity="0.7"></a-light>
-        <a-light type="directional" position="0 10 5" intensity="0.8"></a-light>
+        <a-light type="ambient" intensity="0.6" color="#BBB"></a-light>
+        <a-light type="directional" position="0 10 5" intensity="0.6"></a-light>
 
         <a-sky color="#0a2540"></a-sky>
 
