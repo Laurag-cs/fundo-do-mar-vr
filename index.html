@@ -19,6 +19,7 @@
   <a-scene fog="type: linear; color: #080F2E; near: 5; far: 100">
     <a-assets>
       <img id="chao" src="chao.jpg">
+      <img id="cardume-png" src="cardume.png">
       <a-asset-item id="tubarao-glb" src="megalodon.glb"></a-asset-item>
       <a-asset-item id="baleia-obj" src="baleia.obj"></a-asset-item>
       <a-asset-item id="baleia-mtl" src="baleia.mtl"></a-asset-item>
@@ -179,6 +180,15 @@
     tartaruga.setAttribute('animation','property:position;to:300 5 20;dur:45000;loop:true;easing:linear');
     tartaruga.setAttribute('animation__spin','property:rotation.x;to:-450;dur:9000;loop:true;easing:linear');
     scene.appendChild(tartaruga);
+
+    let cardume = document.createElement('a-plane');
+    cardume.setAttribute('src','#cardume-png'); 
+    cardume.setAttribute('width',10);
+    cardume.setAttribute('height',7);
+    cardume.setAttribute('position','20 6 -50');
+    cardume.setAttribute('material','transparent:true');
+    cardume.setAttribute('animation','property:position;to:-50 10 -50;dur:15000;loop:true;dir:alternate');
+    scene.appendChild(cardume);
   </script>
 </body>
 </html>
