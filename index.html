@@ -19,6 +19,7 @@
   <a-scene fog="type: linear; color: #080F2E; near: 5; far: 100">
     <a-assets>
       <img id="chao" src="chao.jpg">
+      <a-asset-item id="tubarao-glb" src="megalodon.glb"></a-asset-item>
     </a-assets>
 
     <a-plane src="#chao" rotation="-90 0 0" width="150" height="150" color="#555"></a-plane>
@@ -64,7 +65,20 @@
       <a-box position="3 2.5 1.5" width="0.1" height="5" depth="0.1" color="#aaa"></a-box>
       <a-box position="3 2.5 2.5" width="0.1" height="5" depth="0.1" color="#aaa"></a-box>
     </a-entity>
-
   </a-scene>
+
+  <script>
+    const scene = document.querySelector('a-scene');
+
+    let tubarao = document.createElement('a-gltf-model');
+    tubarao.setAttribute('src','#tubarao-glb');
+    tubarao.setAttribute('scale','0.09 0.09 0.09');
+    tubarao.setAttribute('rotation','0 90 0');
+    tubarao.setAttribute('position','-50 12 20');
+    tubarao.setAttribute('animation','property:position;to:300 8 30;dur:32000;loop:true');
+    tubarao.setAttribute('animation__wiggle','property:rotation;dur:900;dir:alternate;loop:true;to:0 100 0;easing:easeInOutSine');
+
+    scene.appendChild(tubarao);
+  </script>
 </body>
 </html>
