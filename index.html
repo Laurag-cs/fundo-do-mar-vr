@@ -22,6 +22,8 @@
       <a-asset-item id="tubarao-glb" src="megalodon.glb"></a-asset-item>
       <a-asset-item id="baleia-obj" src="baleia.obj"></a-asset-item>
       <a-asset-item id="baleia-mtl" src="baleia.mtl"></a-asset-item>
+      <a-asset-item id="agua-obj" src="aviva.obj"></a-asset-item>
+      <a-asset-item id="agua-mtl" src="aviva.mtl"></a-asset-item>
     </a-assets>
 
     <a-plane src="#chao" rotation="-90 0 0" width="150" height="150" color="#555"></a-plane>
@@ -90,6 +92,14 @@
     baleia.setAttribute('position','90 19 -5');
     baleia.setAttribute('animation','property:position;to:-300 19 -75;dur:40000;loop:true');
     scene.appendChild(baleia);
+
+    let aguaViva = document.createElement('a-obj-model');
+    aguaViva.setAttribute('src','#agua-obj');
+    aguaViva.setAttribute('mtl','#agua-mtl');
+    aguaViva.setAttribute('scale','2 2 2');
+    aguaViva.setAttribute('position','0 2 12');
+    aguaViva.setAttribute('animation','property:position;to:0 6 12;dur:6000;dir:alternate;loop:true;easing:easeInOutSine');
+    scene.appendChild(aguaViva);
   </script>
 </body>
 </html>
